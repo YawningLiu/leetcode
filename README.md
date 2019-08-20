@@ -21,21 +21,20 @@ n个\# 表示 n级标题. (1<= n < = 6).  \
 hello github
 ```  
 4.**表格** （表格前空一行, 否则可能影响表格显示）  
-example:  
- 表头 &nbsp \| 表头 &nbsp  \| 表头 &nbsp 
- ---- &nbsp \| ----- &nbsp\| ------    
+
+ 表头 &emsp; \| 表头 &emsp; \| 表头 &emsp;     
+ ---- &emsp; \| ----- &emsp;\| ------&emsp;  
  单元格内容  \| 单元格内容 \| 单元格内容   
  单元格内容  \| 单元格内容 \| 单元格内容    
 
- 
  表头  | 表头  | 表头
  ---- | ----- | ------  
  单元格内容  | 单元格内容 | 单元格内容 
  单元格内容  | 单元格内容 | 单元格内容  
  
-5、其他引用
-图片  
-![图片名称](https://www.baidu.com/img/bd_logo1.png)  
+5、**图片**
+\!\[图片名称]\(https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_nav.4d940ca72.png\)  
+![leetcode图标](https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_nav.4d940ca72.png)  
 链接  
 [链接名称](https://www.baidu.com/)    
 6、列表 
