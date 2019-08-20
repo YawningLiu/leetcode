@@ -20,8 +20,7 @@ n个\# 表示 n级标题. (1<= n < = 6).  \
 ```
 hello github
 ```  
-4.**表格** （表格前空一行, 否则可能影响表格显示）  
-
+4.**表格** （表格前空一行, 否则可能影响表格显示）   
  表头 &emsp; \| 表头 &emsp; \| 表头 &emsp;     
  ---- &emsp; \| ----- &emsp;\| ------&emsp;  
  单元格内容  \| 单元格内容 \| 单元格内容   
@@ -32,33 +31,33 @@ hello github
  单元格内容  | 单元格内容 | 单元格内容 
  单元格内容  | 单元格内容 | 单元格内容  
  
-5、**图片**
-\!\[图片名称]\(https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_nav.4d940ca72.png\)  
+5. **插入图片**  
+\!\[leetcode图标]\(https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_nav.4d940ca72.png\)  
 ![leetcode图标](https://assets.leetcode.com/static_assets/public/webpack_bundles/images/LeetCode_nav.4d940ca72.png)  
-链接  
-[链接名称](https://www.baidu.com/)    
-6、列表 
-1. 项目1  
-2. 项目2  
-3. 项目3  
-   * 项目1 （一个*号会显示为一个黑点，注意⚠️有空格，否则直接显示为*项目1） 
-   * 项目2   
- 
-7、换行（建议直接在前一行后面补两个空格）
-直接回车不能换行，  
-可以在上一行文本后面补两个空格，  
-这样下一行的文本就换行了。
-或者就是在两行文本直接加一个空行。
-也能实现换行效果，不过这个行间距有点大。  
+
+
+6. **引用链接**   
+\[leetcode](https://leetcode.com/)    
+[leetcode](https://leetcode.com/)    
+
+7. **列表**   
+数字. &emsp;=> &emsp; 有序列表   
+\* or \+ or \- &emsp; => &emsp; 无序列表  
+
+8.  **换行**  
+末尾+2空格+Enter键 &emsp; or &emsp; 两次Enter键 (大行距)  
+
+9. **引用文字*  
+\> 你们想升高时, 就向上仰望. 我向下俯视, 因为我已升高.     
+> 你们想升高时, 就向上仰望. 我向下俯视, 因为我已升高.   
+
+10. **分割线**   
+\ ***
+***
  & n b s p ; 空格（去掉空格） 
 < / b r >回车（去掉空格）
-8、引用
-> 第一行引用文字  
-> 第二行引用文字 
- ———————————————— 
-版权声明：本文为CSDN博主「snowzhao210」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/qq_31796651/article/details/80803599
 
+10.
 
 [md使用教程1](https://note.youdao.com/ynoteshare1/index.html?id=65bd2469c4ec2558a6bee7fad4c1c012&type=note)    
 
