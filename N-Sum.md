@@ -1,10 +1,10 @@
-#N-Sum
+# N-Sum
 
-###关键词: Hash Table, Sort, Two Pointers. 
+### 关键词: Hash Table, Sort, Two Pointers. 
 
 (待补充:N-Sum)
 
-####[1. Two Sum](https://leetcode.com/problems/two-sum/) [E].
+#### [1. Two Sum](https://leetcode.com/problems/two-sum/) [E].
 
 **题目**: 已知数组nums, target; return nums中和=target的两数 else 空数组.  
 
@@ -22,7 +22,7 @@
 
 **Note**:  一个元素只能用一次! 防止重复元素的使用呦 ~.  
 
-####[15. 3Sum](https://leetcode.com/problems/3sum/) [M].
+#### [15. 3Sum](https://leetcode.com/problems/3sum/) [M].
 
 **题目**: 已知数组nums; return nums中所有sum=0的排序后的三个数 else 空数组, 且 return 的三元组不能重复. 
 
@@ -42,7 +42,7 @@
 1. **由于排序 了,第一个数>0 or 第一个数+第二个数>0.etc 即可 return 了.** <font color=#dc4040>**(key)** </font>.    
 2. 本题关键点在于排序.  
 
-####[16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/) [M].
+#### [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/) [M].
 
 **题目**: 3 Sum变种.  return nums中 sum closest to target 的三个数 else 空数组. 
 
@@ -78,7 +78,7 @@
 **Note**: **无用循环的排除.** <font color=#dc4040>**(key)** </font>.    
 
 
-####引申: N-Sum(待完成).
+#### 引申: N-Sum(待完成).
 
 补充: 560, 167,454, **560**, 654,   3 Sum Smaller, Two Sum(III)- Data Structure Design, Two Sum less than K.   
 
