@@ -80,7 +80,7 @@
 
 ####引申: N-Sum(待完成).
 
-othesr: 560, 167,454, **560**, 654,   3 Sum Smaller, Two Sum(III)- Data Structure Design, Two Sum less than K. 
+补充: 560, 167,454, **560**, 654,   3 Sum Smaller, Two Sum(III)- Data Structure Design, Two Sum less than K.   
 
 
 
