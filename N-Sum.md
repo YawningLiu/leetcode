@@ -33,7 +33,7 @@
 &emsp;由于时间复杂度至少 O(N^2), 而 **sort** 时间复杂度 O(N$\log$ N), 且排序后可以有效避免重复数组(遇到重复数 continue).  
 3. Sort + One-pass HashTable (Set). <font color=#0099ff>[AC]</font>      
 &emsp;  set 排除重复元素 [=> `map(list, set)`]. 第一个数更新后重置hashmap (这里用 set 也行, 虚假的 Hashmap), 遍历每个元素,并储存相应值.    
-4. 真正的 Hash Table.  <font color=#dc4040>**[main][best]**</font>  
+4. 真正的 Hash Table. <font color=#0099ff>[AC]</font>  <font color=#dc4040>**[main][best]**</font>  
 &emsp; `from collections import defaultdict`  
 &emsp; 先两次遍历: 第一次 => 储存nums元素和各个元素出现次数至dict; 第二次 => 对dict中元素另储存为正数数 pos 和负数数组 neg.排序. 再对 `a in pos`, `b in neg` 找 -(a+b) 是否在memo. 记得考虑特殊情况 
 `[0,0,0], -(a+b) =a, b`.   
@@ -58,7 +58,7 @@
 1. hashmap大失败.    
 2. 对于无用循环的排除, 可以有效提高计算速度.  
 
-####[18. 4Sum](https://leetcode.com/problems/4sum/) [M].
+#### [18. 4Sum](https://leetcode.com/problems/4sum/) [M].
 
 **题目**: return nums中所有sum=target的排序后的四个数 else 空数组, 且 return 的三元组不能重复. 
 
@@ -73,7 +73,7 @@
 2. hashmap + set 排除重复情况. <font color=#0099ff>[AC]</font> <font color=#dc4040> **[best]**</font>   
 &emsp;  时间复杂度 O(N^3). 用 `sorted(list(set(nums)))` 来排除重复结果的影响.  
 3. 2 Sum + hashmap. <font color=#0099ff>[AC]</font>   
-&emsp; 先二重循环建立dict[sum] 储存和为sum的数组, 在对数组进行操作
+&emsp; 先二重循环建立dict[sum] 储存和为sum的数组, 在对数组进行操作.
 
 **Note**: **无用循环的排除.** <font color=#dc4040>**(key)** </font>.    
 
