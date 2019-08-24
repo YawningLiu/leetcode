@@ -93,7 +93,7 @@
 **解法**:  
 1.二重循环暴力求解.<font color=#000ff>[Time Limit Exceeded]</font>   
 &emsp; 时间复杂度 O(N^2), 空间复杂度 O(1).        
-1. 2 Sum 的变种 => Hash Table. <font color=#0099ff>[AC]</font>  <font color=#dc4040>**[main]**</font>   
+2. 2 Sum 的变种 => Hash Table. <font color=#0099ff>[AC]</font>  <font color=#dc4040>**[main]**</font>   
 &emsp;时间复杂度 O(N), 空间复杂度 O(N). 其实就是 2Sum 的一个变形, 我还是对HashTable不太熟.   
 如果用 hashmap来储存前i个数组的和出现的次数: `dic[sum(0,i)]+=1`,   
 那么对于`j>i`, 如果 `target = sum(i,j) = sum(0,j)-sum(0,i)`, 则   `dic[sum(0,j)-target]` 已经存在, 故省去了内循环的时间.
