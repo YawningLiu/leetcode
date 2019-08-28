@@ -109,8 +109,35 @@ Backtracking. 有两种回溯法.
  **[法4]** lists两两合并. 时间复杂度 O(kN), 空间复杂度 O(1).   
  **[法5]** **Divide And Conquer** 归并合并. 对法4 的优化. 时间复杂度 **O(N$log$k)**, 空间复杂度 O(1).     
 
-24. **Swap Nodes in Pairs. [M]**
-25. **Reverse Nodes in k-Group. [H]**
-26. **Remove Duplicates from Sorted Array. [E]**
-27. **Remove Element. [E]**
-28. **Implement strStr(). [E]**
+24. **Swap Nodes in Pairs. [M]**   
+链表节点交换. 递归 or 迭代. 多加几个指针,多画画图, 没啥难点. 
+
+25. **Reverse Nodes in k-Group. [H]**    
+24的拓展. 每 k 个值翻转一下. 递归(很简洁) or 迭代. 多加几个指针,多画画图, 没啥思想上的难点. 时间复杂度 O(kn), 空间复杂度 O(1).   
+<img src="https://wx1.sinaimg.cn/mw1024/006qmTkdly1g6ffthrlw5j30bn09hdgh.jpg" width = "250"  alt="大佬图片" 
+align=center> 
+<img src="https://wx4.sinaimg.cn/mw1024/006qmTkdly1g6fftkiwijj30c702ht8p.jpg" width = "265"  alt="大佬图片" 
+align=center> 
+
+26. **Remove Duplicates from Sorted Array. [E]**  
+Two pointers. 由于 **in-place**, 修改代替remove, 设置快慢指针. 
+
+27. **Remove Element. [E]**   
+Two pointers. 类似 26, 更简单. 除了类似上题的从前 -> 后的快慢指针, 还可以一头一尾, 头 = target时, 把尾的值覆盖过去. 
+
+28. **Implement strStr(). [E]**   
+Two pointers in string.(都不算.) 很简单,没啥意思. 
+
+29. **Divide Two Integers. [M]**    
+py一般没有这个烦恼. 
+30. **Substring with Concatenation of All Words. [H]**    
+[知乎](https://zhuanlan.zhihu.com/p/73570551)写过了. 
+31. **Next Permutation. [M]**  
+重点是这个 "Next Permutation" 的理解
+32. **Longest Valid Parentheses. [H]**   
+重点来了! Dynamic Programing; stack,  Without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次. 
+33. **Search in Rotated Sorted Array. [M]**
+34. **Find First and Last Position of Element in Sorted Array. [M]**
+35. **Search Insert Position. [E]**
+36. **Valid Sudoku. [M]**
+37. **Sudoku Solver. [H]**
