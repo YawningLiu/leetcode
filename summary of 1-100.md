@@ -27,10 +27,17 @@ dp[i][j] =dp[i+1][j-1] if str[i]==str[j] else 0
  **[法3]**  ***[Manacher's Algorithm 马拉车算法](https://blog.crimx.com/2017/07/06/manachers-algorithm/)***, 时间复杂度 O(n). 例如 "abbaopxpo" 中, idx = 16 时, 可达到的最右边界 c+p[c] = 14+5 = 19 > idx, 则 P[idx] = min(P[2*c-i], c+P[c]-i). 在用中心扩展法扩展P[idx].
 
 
+<<<<<<< HEAD
+|id|0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10|11|12|13|14|15|16|17|18|19|20|     
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|       
+|s |\$|\#|a |\#|b |\#|b |\#|a |\#|o |\#|p |\#|x |\#|p |\#|o |\#|\&|    
+|P |0 |0 |1 |0 |1 |4 |1 |0 |1 |0 |1 |0 |1 |0 |5 |0 |1 |0 |1 |0 |0 |        
+=======
 |id|0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10|11|12|13|14|15|16|17|18|19|20|   
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|       
 |s |\$|\#|a |\#|b |\#|b |\#|a |\#|o |\#|p |\#|x |\#|p |\#|o |\#|\&|     
 |P |0 |0 |1 |0 |1 |4 |1 |0 |1 |0 |1 |0 |1 |0 |5 |0 |1 |0 |1 |0 |0 |         
+>>>>>>> 5f44079658a3bda3c0933c51b712a6f9bd09a2b9
 
 6. **ZigZag Conversion. [M]**   
 找规律, 没啥意思.
@@ -45,8 +52,16 @@ dp[i][j] =dp[i+1][j-1] if str[i]==str[j] else 0
 用好整除和取余, 很简单.   
 
 10. **Regular Expression Matching. [H]**   
-Backtracking, Dynamic programming.  
-***先没看***
+[知乎](https://zhuanlan.zhihu.com/p/72179123) 写过了. Backtracking 和 Dynamic programming. 重点在于匹配方法. 
+```
+#状态转移方程:
+if p[j-1]!='*':
+    dp[i][j] = dp[i-1][j-1] and (p[j-1] == s[i-1] or p[j-1] == ".")
+else: 
+    dp[i][j] = (dp[i-1][j] and (p[j-2] == s[i-1] or p[j-2] == ".")) or dp[i][j-2]
+#py自带函数
+re.match(p, s)
+```
 
 11. **Container With Most Water. [M]**     
 Two pointers. 时间O(n), 空间O(1). 可以看作二叉线段树精简为双指针(?): e.g. [1,8,6,2,5,4,8,3,7]. (力扣里找的大佬的图片.)  
@@ -88,3 +103,25 @@ Stack 基础操作.
 链表基础操作. 
 
 22. **Generate Parentheses. [M]**
+<<<<<<< HEAD
+Backtracking. 有两种回溯法.    
+ **[法1]** 对左括号和右括号回溯 (设定index, 出现 "(" , " )" 时 index 分别怎么变化.)    
+ **[法2]** 对括号闭合数 (Closure Number) 回溯. n组括号可以分为被一个大括号裹着的 i+1 个括号和另外 n-i-1 个括号.    
+
+23. **Merge k Sorted Lists. [H]**   
+21的扩展. divide and conquer. (Heap=>Priority Queue)   
+ **[法1]** 暴力求解. lists -> array -> array.sort() -> lists. 时间复杂度 O(N$log$N), 空间复杂度 O(1).      
+ **[法2]** 竖着每列最小元素逐一比较. 时间复杂度 O(kN), 空间复杂度 O(N) or O(1).   
+ **[法3]** **Heap / Priority Queue** 优先级队列 / 堆. 对法2 的优化, 用优先级队列储存竖行元素, 这样每次比较时复杂度降为 log 级. 时间复杂度 **O(N$log$k)**, 空间复杂度 O(k).   
+ 注意, 在使用 `heapq` 模块时, 应该在指针前添加列表下标index,防止val相同时对指针 进行操作.     
+ **[法4]** lists两两合并. 时间复杂度 O(kN), 空间复杂度 O(1).   
+ **[法5]** **Divide And Conquer** 归并合并. 对法4 的优化. 时间复杂度 **O(N$log$k)**, 空间复杂度 O(1).     
+
+24. **Swap Nodes in Pairs. [M]**
+25. **Reverse Nodes in k-Group. [H]**
+26. **Remove Duplicates from Sorted Array. [E]**
+27. **Remove Element. [E]**
+28. **Implement strStr(). [E]**
+
+=======
+>>>>>>> 5f44079658a3bda3c0933c51b712a6f9bd09a2b9
