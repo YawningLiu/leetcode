@@ -151,8 +151,8 @@ H1 = collections.Counter(words) #待补充:collections模块
 数列全部递减 => 最大, 逆序输出; 第一个递增数字a[i]>a[i-1] => 把a[i-1]挪到a[i]后面第一个比它小的数字前面(全比它大就放到最后). 
 
 32. **Longest Valid Parentheses. [H]**   
-重点来了! Dynamic Programing; stack,  Without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次. 
-
+重点来了! Dynamic Programing; stack; without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次. 
+ **[法1]** 动态规划. 状态规划函数
 
 
 33. **Search in Rotated Sorted Array. [M]**
