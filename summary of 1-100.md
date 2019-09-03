@@ -151,9 +151,19 @@ H1 = collections.Counter(words) #待补充:collections模块
 数列全部递减 => 最大, 逆序输出; 第一个递增数字a[i]>a[i-1] => 把a[i-1]挪到a[i]后面第一个比它小的数字前面(全比它大就放到最后). 
 
 32. **Longest Valid Parentheses. [H]**   
-重点来了! Dynamic Programing; stack; without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次. 
- **[法1]** 动态规划. 状态规划函数
+重点来了! Dynamic programing; stack; without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次.    
+ **[法1]** 动态规划. dp[i+1] 表示以第i个括号结尾的合法括号有多少. 则状态转移函数: 
+```
+if s[i] ==')':  #以s[i]=='(' 结尾肯定不合法     
+    if i > 0 and s[i-1]=='(': #正好构成()   
+        dp[i+1] = dp[i-1]+2
+    if i > dp[i] and s[i-1]==')':  #s[i-1]==')'时怎样合法
+        if dp[i-dp[i]-1]=='(': #已知s[i-dp[i]]到s[i]是合法的
+            dp[i+1] = dp[i]+2+dp[i-dp[i]-1] #当前合法+上一组可能存在的合法括号 
+```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  **[法2]** 单调栈. 就是   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[法3]** 两次遍历
 
 33. **Search in Rotated Sorted Array. [M]**
 34. **Find First and Last Position of Element in Sorted Array. [M]**
