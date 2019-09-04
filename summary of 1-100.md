@@ -179,8 +179,29 @@ else:  # ')' 栈尾元素出栈. 出栈后栈顶元素是当前合法括号开�
 另外一种是旋转点 和 target 同时找 (代码比较复杂容易出错, 但画画图思路就清楚了).  
  
 34. **Find First and Last Position of Element in Sorted Array. [M]**    
-Binary search. 
+Binary search. 没啥难的, 注意边界细节就行. 
 
-35. **Search Insert Position. [E]**
-36. **Valid Sudoku. [M]**
-37. **Sudoku Solver. [H]**
+35. **Search Insert Position. [E]**    
+Binary search. 没啥难点. 
+
+36. **Valid Sudoku. [M]**   
+哈希表. 笨办法三次遍历, 聪明办法一次遍历, 没啥意思. 
+
+37. **Sudoku Solver. [H]**     
+Hash table; backtracking. 回溯算法典型题目之一, 没啥特点.   
+
+38. **Count and Say. [E]**    
+难点在理解题目. 程序本身太简单了.  
+
+39. **Combination Sum. [M]**      
+40. **Combination Sum II. [M]**
+41. **First Missing Positive. [H]**
+42. **Trapping Rain Water. [H]**
+43. **Multiply Strings. [M]**
+44. **Wildcard Matching. [H]**
+45. **Jump Game II. [H]**
+46. **Permutations. [M]**
+47. **Permutations II. [M]**
+48. **Rotate Image. [M]**
+49. **Group Anagrams. [M]**
+50. **Pow(x, n). [M]**
