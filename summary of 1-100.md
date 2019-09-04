@@ -151,8 +151,9 @@ H1 = collections.Counter(words) #待补充:collections模块
 数列全部递减 => 最大, 逆序输出; 第一个递增数字a[i]>a[i-1] => 把a[i-1]挪到a[i]后面第一个比它小的数字前面(全比它大就放到最后). 
 
 32. **Longest Valid Parentheses. [H]**   
-重点来了! Dynamic programing; stack; without extra space, 牛逼, 尤其是单调栈法, 好好再理解一次.    
- **[法1]** 动态规划. dp[i+1] 表示以第i个括号结尾的合法括号有多少. 则状态转移函数: 
+非常典型的一道题. Dynamic programing; monotone stack; without extra space, 都是线性时间复杂度. 尤其是 ms 非常牛逼了  
+**[法1]** 双指标法. 从左 -> 右 扫描一次, 从右 -> 左扫描一次, 分别记录 '(' 和 ')'个数, 找出里面最大值. => 特殊性太强, 看看就好.  
+ **[法2]** 动态规划. dp[i+1] 表示以第i个括号结尾的合法括号有多少. 状态转移函数: 
 ```
 if s[i] ==')':  #以s[i]=='(' 结尾肯定不合法     
     if i > 0 and s[i-1]=='(': #正好构成()   
@@ -161,12 +162,25 @@ if s[i] ==')':  #以s[i]=='(' 结尾肯定不合法
         if dp[i-dp[i]-1]=='(': #已知s[i-dp[i]]到s[i]是合法的
             dp[i+1] = dp[i]+2+dp[i-dp[i]-1] #当前合法+上一组可能存在的合法括号 
 ```
+**[法3]** 单调栈. '('入栈,')'出栈. 每次计算栈里的值. 为了方便计算, 初始化 `stack =[-1]`. 
+```
+if s[i]=="(":  #'('下标入栈 => monotone stack总是下标入栈
+    stack.append(i)
+else:  # ')' 栈尾元素出栈. 出栈后栈顶元素是当前合法括号开头下标的前一位.
+                stack.pop() 
+                if not stack: #栈空, 当前')'不合法,下标进.
+                    stack.append(i)
+                else: #栈非空,说明s中元素两两搞cp去了
+                    res = max(res,i-stack[-1])
+```    
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  **[法2]** 单调栈. 就是   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[法3]** 两次遍历
+33. **Search in Rotated Sorted Array. [M]**    
+搜索旋转后的无重复排序数组. 最直观的方法两次使用二分法: 先找旋转点, 再找target.       
+另外一种是旋转点 和 target 同时找 (代码比较复杂容易出错, 但画画图思路就清楚了).  
+ 
+34. **Find First and Last Position of Element in Sorted Array. [M]**    
+Binary search. 
 
-33. **Search in Rotated Sorted Array. [M]**
-34. **Find First and Last Position of Element in Sorted Array. [M]**
 35. **Search Insert Position. [E]**
 36. **Valid Sudoku. [M]**
 37. **Sudoku Solver. [H]**
