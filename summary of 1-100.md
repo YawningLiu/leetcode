@@ -194,8 +194,22 @@ Hash table; backtracking. 回溯算法典型题目之一, 没啥特点.
 难点在理解题目. 程序本身太简单了.  
 
 39. **Combination Sum. [M]**      
-40. **Combination Sum II. [M]**
-41. **First Missing Positive. [H]**
+**先排序!!!** (为了后续的剪枝 + 去重操作.)    
+**[法1]**. Backtracking, 回溯经典题目. 先向前列举所有情况, 得到结果/确定无解就向上一层回溯.    
+**[法2]**. Dynamic programing. 用 hashmap 保存每个可能的取值结果. 注意剪枝以及去重 (有序存表, 则添加新元素时,新元素 >= -1位置再储存, 即可避免重复元素).    
+40. **Combination Sum II. [M]**   
+**先排序!!!** 不用考虑答案重复, 同39. (本题如果用dp, 重复元素不太好弄, 得用集合及其性质, 特殊性太强, 暂时不考虑了.) 回溯时的算法有一点点不同. 多一句排重语句:
+```
+if i>0 and x == candidates[i-1]:
+    continue
+```    
+   
+41. **First Missing Positive. [H]**    
+**Hash table.** O(n) time and O(1) space. 借鉴哈希表的思想, "in-place" 即把自己当 hashmap解决问题.   
+**[法1]**  O(2n).  <=> dic[k]=k+1的hash表. 第一次遍历, 在k处放置数字k+1; 第二次遍历,寻找最小的不在规定位置的数. 需要注意的是**重复数字**情况:`nums[nums[i]-1]==nums[i]` 时跳出循环.    
+**[法2]**  O(3n).  <=> dic[k]=True(正)的hash表.  第一次遍历, 把1<=x<=n的数挪前并记录长度r; 第二次遍历, 把前 r 的数 x 以下标为映射所找到的nums[x] 变成负数; 第三次遍历, 寻找第一个正数,下标+1. 
+
+
 42. **Trapping Rain Water. [H]**
 43. **Multiply Strings. [M]**
 44. **Wildcard Matching. [H]**
