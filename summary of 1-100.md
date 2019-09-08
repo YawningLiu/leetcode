@@ -207,10 +207,15 @@ if i>0 and x == candidates[i-1]:
 41. **First Missing Positive. [H]**    
 **Hash table.** O(n) time and O(1) space. 借鉴哈希表的思想, "in-place" 即把自己当 hashmap解决问题.   
 **[法1]**  O(2n).  <=> dic[k]=k+1的hash表. 第一次遍历, 在k处放置数字k+1; 第二次遍历,寻找最小的不在规定位置的数. 需要注意的是**重复数字**情况:`nums[nums[i]-1]==nums[i]` 时跳出循环.    
-**[法2]**  O(3n).  <=> dic[k]=True(正)的hash表.  第一次遍历, 把1<=x<=n的数挪前并记录长度r; 第二次遍历, 把前 r 的数 x 以下标为映射所找到的nums[x] 变成负数; 第三次遍历, 寻找第一个正数,下标+1. 
+**[法2]**  O(3n).  <=> dic[k]=True(正)的hash表.  第一次遍历, 把1<=x<=n的数挪前并记录长度r; 第二次遍历, 把前 r 的数 x 以下标为映射所找到的nums[x] 变成负数; 第三次遍历, 寻找第一个正数,下标+1.    
+**[法3]**  O(3n).  <=> dic[k]=True(>0) 的hash表. 首先结尾补0. 第一次遍历, 把 range(1,n) 之外的数变为0; 第二次遍历, 以非0
+数 x%n 为下标所得到的 nums[x]+n; 第三次遍历, 寻找第一个小于n的数的下标 (即没有出现过).   
 
+42. **Trapping Rain Water. [H]**     
+Dynamic programming 简化得到 two pointers; monotone stack.
+**[法1]** Two pointers. 其实是由动态规划精简而来的.     
+**[法2]**    
 
-42. **Trapping Rain Water. [H]**
 43. **Multiply Strings. [M]**
 44. **Wildcard Matching. [H]**
 45. **Jump Game II. [H]**
