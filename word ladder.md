@@ -20,7 +20,7 @@
 例如, 在BFS时我们需要访问dog的所有邻接点, 可以先生成其所有通用状态: 
 * dog => *og
 * dog => d*g
-* dog => du*     
+* dog => do*     
  
 第二个变换 d*g 可以同时映射到 dig 或者 dug, 因为他们都有相同的通用状态. 拥有相同的通用状态意味着两个单词只相差一个字母, 即他们的节点是相连的。
 
@@ -67,7 +67,7 @@
 * 在BFS扩展过程中可以储存每个节点(可能>=1)的 parents, 以便下一步操作 -- 回溯路径. (空间换时间)
 * DFS搜索合法路径
 * 在每一层可以有重复节点.[队列里同层不要删掉] (以防漏掉合法路径). e.g.:
-![huahuajiang](https://wx3.sinaimg.cn/mw1024/006qmTkdly1g6t6oam4hwj30ib08i0uu.jpg)
+![huahuajiang](https://wx3.sinaimg.cn/mw1024/006qmTkdly1g6t6oam4hwj30ib08i0uu.jpg)     
 如果不能有重复节点, 就会漏掉一条合法路径. 
 
 ### 法1 :单向 BFS + DFS
