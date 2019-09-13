@@ -1,4 +1,5 @@
 # 总结(1-50)
+---
 
 1. **Two Sum. [E]**   
 hashmap, 没啥难点.  
@@ -236,11 +237,42 @@ align=center>
 
 44. **Wildcard Matching. [H]**   
 [知乎](https://zhuanlan.zhihu.com/p/72179123)写过了.    
-**[法1]**  Dynamic Programing.    
-**[法3]**  Greedy. (i.e. 所谓的双指针法)
-45. **Jump Game II. [H]**
-46. **Permutations. [M]**
-47. **Permutations II. [M]**
-48. **Rotate Image. [M]**
-49. **Group Anagrams. [M]**
-50. **Pow(x, n). [M]**
+**[法1]**  Dynamic Programing. 没啥难的, 照着 lc10 写出状态转移方程即可.    
+**[法2]**  Greedy. (i.e. 所谓的双指针法). 
+```
+    # i,j : s, p 中指针位置;  match,star : *出现时s被匹配后的指针位置, p中指针位置
+    while i < len(s):
+        if j < len(p) and (p[j] == s[i] or p[j] == "?"): # 普通匹配
+            i,j = i+1,j+1  
+        elif j < lp and p[j]=='*': # *出现了, 暂定这个'*'匹配了0个字符
+            star, match, j = j, i, j+1 
+        elif star!=-1:  # 当前 s[i]与 p[j]不匹配, s中被'*'匹配的字符数量+1, i,j回去
+            match+=1  #s中被匹配的字符数量多1个, 看看行不行
+            i,j = match, star+1  #i,j 返回去继续尝试
+        else: return False
+```
+
+45. **Jump Game II. [H]**     
+  **Greedy**. 典型的贪婪算法(也可以理解为BFS), 理解思想就容易多了. 从前 -> 后, 从后 -> 前两种方法. (遇到此类题, 多测试一些数据)
+ 
+46. **Permutations. [M]**   
+Backtracking 经典题型: "回溯" = "BFS" + "状态重置" + "剪枝".    
+本题回溯方法很多, 可分为: 对插入位置回溯, 对交换位置回溯. 
+```    
+return list(itertools.permutations(nums))  #py3有专门的库函数你怕不怕.   
+```     
+
+47. **Permutations II. [M]**   
+**排序**. 本题的回溯就需要剪枝了.  
+明天再补齐. 
+```
+return list({p for p in itertools.permutations(nums)})
+```
+48. **Rotate Image. [M]**    
+找规律, 没啥特点.
+ 
+49. **Group Anagrams. [M]**    
+[知乎](https://zhuanlan.zhihu.com/p/74650414)已写. 
+明天再补齐. 
+50. **Pow(x, n). [M]**   
+写不动了, 还差 50,49, 47. 
