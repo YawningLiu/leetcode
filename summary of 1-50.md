@@ -1,4 +1,4 @@
-# 总结(1-100)
+# 总结(1-50)
 
 1. **Two Sum. [E]**   
 hashmap, 没啥难点.  
@@ -213,11 +213,31 @@ if i>0 and x == candidates[i-1]:
 
 42. **Trapping Rain Water. [H]**     
 Dynamic programming 简化得到 two pointers; monotone stack.    
-**[法1]** Two pointers. 其实是由动态规划精简而来的.     
-**[法2]** Monotone stack.  
+**[法1]** Two pointers. 其实是由动态规划精简而来的. (理解了就会很简单.)          
+先说动态规划: dpleft[i]: i-th 列左边最大值, dpright[i]: i-th 列右边最大值. =>三次遍历(求 dpleft, 求 dpright, 求所接雨水).   
+由于dp数组每个值只用到一次, 故dp数组可精简为首尾指针left,right, 以及左右最大值maxl, maxr. 
+当 `maxl<maxr` 时, left指针后移, 新left位更新maxl并计算接水量, 反之亦然.      
+**[法2]** Monotone stack. **注意入栈的是元素下标而不是元素本身!** 联动84.   
+当`H[i]<stack[-1]`, 有积水,入栈; 反之, 出栈, 计算积水含量, 并将`H[i]` 入栈, 作为新的高度. (没 two pointers 简单.)
 
-43. **Multiply Strings. [M]**
-44. **Wildcard Matching. [H]**
+43. **Multiply Strings. [M]**    
+**[法1]** 简单粗暴直接计算.    
+**[法2]** 竖式相加. 但也没啥意思...   
+**[法3]** **FFT(快速Fourier变换)** 的 n\log(n) 解法. (牛逼啊, 我怎么就没想到, 太丢数学系的脸了)    
+<img src="https://wx3.sinaimg.cn/mw1024/006qmTkdly1g6vydttmg9j310b0u0n9n.jpg" width = "270"  alt="fft" 
+align=center>
+```
+        import numpy as np  #使用到的函数
+        A,B = np.fft.fft(a),np.fft.fft(b)
+        C = np.multiply(A,B)
+        c= np.fft.ifft(C)
+```
+
+
+44. **Wildcard Matching. [H]**   
+[知乎](https://zhuanlan.zhihu.com/p/72179123)写过了.    
+**[法1]**  Dynamic Programing.    
+**[法3]**  Greedy. (i.e. 所谓的双指针法)
 45. **Jump Game II. [H]**
 46. **Permutations. [M]**
 47. **Permutations II. [M]**
