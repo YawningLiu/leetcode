@@ -1,5 +1,8 @@
 # 总结(1-50)
 
+> => 应该掌握的知识点:  哈希表, 链表基本操作, 马拉车, 动态规划,  二分法, 分治, 第k小的数, 排序, 回溯, 二指针, 堆, 优先队列, 滑动窗口, 贪婪, 单调栈, FFT.     
+> => 待掌握: 线段树segment, 字典树tire, Floyd 算法, 各种排序算法.  
+
 1. **Two Sum. [E]**   
 hashmap, 没啥难点.  
 
@@ -262,16 +265,19 @@ return list(itertools.permutations(nums))  #py3有专门的库函数你怕不怕
 ```     
 
 47. **Permutations II. [M]**   
-**排序**. 本题的回溯就需要剪枝了.  
-明天再补齐. 
+**排序**. 本题的回溯就需要剪枝(去重)了. 用 `continue` 去重.  
+交换 + 插入 两种方法 . 回溯经典题型. 
 ```
-return list({p for p in itertools.permutations(nums)})
+return list({p for p in itertools.permutations(nums)}) #一句话解决
 ```
 48. **Rotate Image. [M]**    
 找规律, 没啥特点.
  
 49. **Group Anagrams. [M]**    
-[知乎](https://zhuanlan.zhihu.com/p/74650414)已写. 
-明天再补齐. 
+[知乎](https://zhuanlan.zhihu.com/p/74650414)已写. 还是 Hash Table 的应用.  
+**[法1]** 对str中元素 x 进行 `tuple(sorted(x))` ,  `''.join(sorted(x))` 作为 key 存入dict, 最后 `dict.values()`.    
+**[法2]** 对由于只有小写字母, 故可将其转化为长为26的列表进行操作.     
+**[法3]** 算数基本定理. 原理同上, 尤其唯一性来的, 但只适用于单词长度较短时, (单词较长会溢出.) 
+
 50. **Pow(x, n). [M]**   
-写不动了, 还差 50,49, 47. 
+**Binary search** + 注意 边界. 有递归 + 迭代两种形式. 其实就是考考二分法. 
