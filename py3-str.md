@@ -29,12 +29,12 @@
 
 |func| return Boolean |     
 |----|:---------------|       
-| `str.isdigit()` | 是否str只由数字组成. |   
-| `str.isalpha()` | 是否str只由字母组成. |   
-| `str.isalnum()` |　是否str只由字母/数字组成. |   
-| `str.isupper()`　|　判断str中所有字母是否为大写. |    
-| `str.islower()`　|　判断str中所有字母是否为小写. |   
-| `str.isspace()`　|　判断str是否只由空白字符组成. |    
+| `str.isdigit()`  | 是否str只由数字组成.        |   
+| `str.isalpha()`  | 是否str只由字母组成.        |   
+| `str.isalnum()`  | 是否str只由字母/数字组成.   |   
+| `str.isupper()`　| 判断str中所有字母是否为大写. |    
+| `str.islower()`　| 判断str中所有字母是否为小写. |   
+| `str.isspace()`　| 判断str是否只由空白字符组成. |    
 
 ---
 参考链接  
