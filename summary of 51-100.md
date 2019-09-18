@@ -39,11 +39,33 @@ lc54 的反向. 贪吃蛇走法/ 逐层走法.
 60. **Permutation Sequence. [M]**   
 联动 41/46. 回溯时要注意两个地方: 利用 k//(idx!) 和 k%(idx!) 递归, 选择某个值后要删除切片元素/ 移动剩余所有元素位置(时间复杂度好像是O(N^2)). [代码容易出错的地方太多, 就记下解题思路吧.]
   
-61. **Rotate List. [M]**
-62. **Unique Paths.[M]**
-63. **Unique Paths II. [M]**
-64. **Minimum Path Sum. [M]**
-65. **Valid Number. [H]**
+61. **Rotate List. [M]**    
+需要注意的是可能 **k >n=len(list)**. 两次遍历: 第一次得到n, 第二次移动**k%n**位列表. 不需要双指针. (循环列表可能会超时, 不可取.)  
+ 
+
+62. **Unique Paths.[M]**    
+**[法1]** 简单 dynamic programming. `dp[i][j]=dp[i-1][j]+dp[i][j-1]`, 还可以精简为一维dp.     
+**[法2]** 公式直接算. 从 `start` 到 `finish` 一共 `m-1+n-1` 个格子 (不包括 `finish`), 其中 `m-1`次r, `n-1` 次d => 格子数 `C^{n-1}_{m+n-2}`. 即:  ` ans = math.factorial(m+n-2) / math.factorial(m-1) / math.factorial(n-1)`
+
+63. **Unique Paths II. [M]**   
+lc62的升级版, 修复了直接调用数学公式的bug. 还是简单 dynamic programming. `dp[i][j]=dp[i-1][j]+dp[i][j-1] if not obstacleGrid[i][j] else 0`, 也可以精简为一维dp.    
+(C++ 好像还有数据太大超出范围的问题?=> long long )
+ 
+64. **Minimum Path Sum. [M]**    
+lc62的升级版, 依旧是很简单的 dynamic programming. `dp[i][j] = grid[i][j] + min(dp[i-1][j],dp[i][j-1])`. 同样可以精简为一维 dp 数组.  
+
+65. **Valid Number. [H]**    
+**[法1]** 暴力直接法, WA了好多次orz...    
+**[法2]** DFA.   
+![dfa](https://wx2.sinaimg.cn/mw690/006qmTkdly1g73xfzx39rj323l1qitqs.jpg)
+**[法3]** 正则表达式匹配.   
+**[法4]** py3 作弊法.  
+```
+        try: float(s)
+        except: return False
+        return True
+```
+
 66. **Plus One. [E]**
 67. **Add Binary. [E]**
 68. **Text Justification. [H]**
