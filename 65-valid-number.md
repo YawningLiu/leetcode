@@ -48,7 +48,7 @@ M = ( K, Σ, δ, q0, F )
 | `\s`     | 匹配空格字符.             |   
 | `*`      | 匹配 **0 次或多次** 前面出现的正则表达式.   |   
 | `()`　    | 匹配封闭的正则表达式, 另存为子组. |    
-| `|`　     | 择 1 匹配的管道符号, 从多个模式中选择其一.  |   
+| `\|`　    | 择 1 匹配的管道符号, 从多个模式中选择其一.  |   
 | `+`　     | 匹配 **1 次或多次** 前面出现的正则表达式. |    
 | `?`　     | 匹配 **0 次或 1 次** 前面出现的正则表达式.   |    
 | `[x-y]` 　| 匹配 x~y 范围中任意单一字符 |    
@@ -101,4 +101,7 @@ e.g.: `p, s ="c*a.*ja", "aasssaijsja"`
 
 ## 参考资料    
 [编译原理：有穷自动机（DFA与NFA）](https://blog.csdn.net/qq_39521554/article/details/79416553)   
-[什么是NFA(不确定的有穷自动机)和DFA(确定的有穷自动机)](https://www.cnblogs.com/AndyEvans/p/10240790.html)
+[什么是NFA(不确定的有穷自动机)和DFA(确定的有穷自动机)](https://www.cnblogs.com/AndyEvans/p/10240790.html)    
+[正则表达式手册](http://tool.oschina.net/uploads/apidocs/jquery/regexp.html)   
+[Python3 re模块](https://www.cnblogs.com/smxiazi/p/8911964.html)     
+[Python3 正则表达式](https://www.runoob.com/python3/python3-reg-expressions.html)
