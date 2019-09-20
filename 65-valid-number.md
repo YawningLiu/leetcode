@@ -92,7 +92,11 @@ Match对象为 `MatchObject` 实例, 其中有这次匹配的信息: 它是从�
  
 e.g.: `p, s ="c*a.*ja", "aasssaijsja"`    
 <_sre.SRE_Match object; span=(0, 11), match='aasssaijsja'>
+
 ## [法4] 作弊法.  
+
+注: 这里不能使用 `if...else...`, 因为会 return False 的异常字符在 `float()` 中会出错, 所以只能用 `try...except...` 捕获异常. 
+
 ```
         try: float(s)
         except: return False
@@ -101,7 +105,11 @@ e.g.: `p, s ="c*a.*ja", "aasssaijsja"`
 
 ## 参考资料    
 [编译原理：有穷自动机（DFA与NFA）](https://blog.csdn.net/qq_39521554/article/details/79416553)   
+
 [什么是NFA(不确定的有穷自动机)和DFA(确定的有穷自动机)](https://www.cnblogs.com/AndyEvans/p/10240790.html)    
+
 [正则表达式手册](http://tool.oschina.net/uploads/apidocs/jquery/regexp.html)   
-[Python3 re模块](https://www.cnblogs.com/smxiazi/p/8911964.html)     
+
+[Python3 re模块](https://www.cnblogs.com/smxiazi/p/8911964.html)  
+   
 [Python3 正则表达式](https://www.runoob.com/python3/python3-reg-expressions.html)
