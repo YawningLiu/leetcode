@@ -34,7 +34,7 @@ M = ( K, Σ, δ, q0, F )
 
 ## [法3] 正则表达式.
 ### 代码
-```
+```python3
      def isNumber(self, s: str) -> bool:
         regex = "^\s*(-|\+)?([0-9]+\.?|\.[0-9]+)([0-9]+)?(e(-|\+)?[0-9]+)?\s*$"
         if re.match(regex, s):return True
@@ -82,7 +82,7 @@ M = ( K, Σ, δ, q0, F )
 * flags：标记为，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。
   
 ### `re.match()` 详解
-```
+```python3
 re.match(pattern, string, [flags])
 ```
 从首字母开始开始匹配, string 如果包含pattern子串, 则匹配成功, 返回Match对象.
@@ -97,7 +97,7 @@ e.g.: `p, s ="c*a.*ja", "aasssaijsja"`
 
 注: 这里不能使用 `if...else...`, 因为会 return False 的异常字符在 `float()` 中会出错, 所以只能用 `try...except...` 捕获异常. 
 
-```
+```python3
         try: float(s)
         except: return False
         return True
