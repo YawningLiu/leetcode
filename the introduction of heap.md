@@ -20,7 +20,7 @@
 > * BFS 搜索会很快, 但堆很慢. 
 
 #### 堆中的父子关系
-```
+```python
 #len(heap) = n, 当前节点 index
 father = (index-1)//2 #index=0时辈分最高
 son1 = 2*index+1   #注意index>n//2时儿子还没生出来呢
@@ -38,7 +38,7 @@ heap[fateher] >= heap[index]
 
 #### 堆的建立
 最优算法: **递归**. 从最后一个拥有子节点的节点向上遍历, 使用 `shiftDown()`将遍历到的每一个子树变成堆.
-```
+```python
 import os
 import sys
 #抄的, 就是heapify(list)
@@ -60,7 +60,7 @@ if __name__ == "__main__":
 ```
 ### python3: heapq 模块
 内置模块. 可以用来求前n个最大/最小值. 
-```
+```python
 heapq.nlargest(n,heap)   #前n个最大值
 heapq.nsmallest(n,heap)   #前n个最小值
 heapq.heappush(heap, item)  #新元素入队堆
