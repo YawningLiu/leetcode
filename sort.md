@@ -1,6 +1,19 @@
 # 排序算法总结
 
-## 0.  概括
+- [0. 概括](#0.1-算法分类)
+- [1. 冒泡排序](#1-冒泡排序-bubble-sort)
+- [2. 快速排序](#2-快速排序-quick-sort)
+- [3. 直接插入排序](#3-直接插入排序-insertion-sort)
+- [4. 希尔排序](#4-希尔排序-shell-sort)
+- [5. 简单选择排序](#5-简单选择排序-selection-sort)
+- [6. 堆排序](#6-堆排序-heap-sort)
+- [7. 归并排序](#7-归并排序-merge-sort)
+- [8. 计数排序](#8-计数排序-counting-sort)
+- [9. 桶排序](#9-桶排序-bucket-sort)
+- [10. 基数排序](#10-基数排序-radix-sort)
+- [参考资料](#参考资料)
+---
+## 0  概括
 本次总结只考虑对数组的排序.  
 
 ### 0.1 算法分类
@@ -19,20 +32,20 @@
 
 ### 0.2 算法复杂度
 
-|排序方法|时间(平均)|时间(最好)|时间(最坏)|空间|稳定性|完成度|      
-|-------|-------|-------|-------|----|-----|---|     
-|冒泡排序|O(n<sup>2</sup>)|O(n)|O(n<sup>2</sup>)|O(1)|稳定|√|      
-|快速排序|O(nlogn)|O(nlogn)|O(n<sup>2</sup>)|O(logn)~O(n)|不稳定| √|    
-|直接插入|O(n<sup>2</sup>)|O(n)|O(n<sup>2</sup>)|O(1)|稳定|√|   
-|希尔排序|O(nlogn) ~ O(n<sup>2</sup>)|O(n<sup>1.3</sup>)|O(n<sup>2</sup>)|O(1)|不稳定|√|     
-|简单选择|O(n<sup>2</sup>)|O(n<sup>2</sup>)|O(n<sup>2</sup>)|O(1)|不稳定|√|        
+|排序方法|时间(平均)|时间(最好)|时间(最坏)|空间|稳定性|      
+|-------|-------|-------|-------|----|-----|    
+|冒泡排序|O(n<sup>2</sup>)|O(n)|O(n<sup>2</sup>)|O(1)|稳定|      
+|快速排序|O(nlogn)|O(nlogn)|O(n<sup>2</sup>)|O(logn)~O(n)|不稳定|    
+|直接插入|O(n<sup>2</sup>)|O(n)|O(n<sup>2</sup>)|O(1)|稳定|   
+|希尔排序|O(nlogn) ~ O(n<sup>2</sup>)|O(n<sup>1.3</sup>)|O(n<sup>2</sup>)|O(1)|不稳定|    
+|简单选择|O(n<sup>2</sup>)|O(n<sup>2</sup>)|O(n<sup>2</sup>)|O(1)|不稳定|        
 |堆排序|O(nlogn)|O(nlogn)|O(nlogn)|O(1)|不稳定|    
 |归并(bottom up)|O(nlogn)|O(nlogn)|O(nlogn)|O(n)|稳定|    
 |归并(top down)|O(nlogn)|O(nlogn)|O(nlogn)|O(n)|稳定|    
 ||    
-|计数排序|O(n+k)|O(n+k)|O(n+k)|O(n+k)|稳定|√|      
+|计数排序|O(n+k)|O(n+k)|O(n+k)|O(n+k)|稳定|      
 |桶排序|O(n+k)|O(n)|O(n<sup>2</sup>)|O(n+k)|稳定|     
-|基数排序|O(n*r) | O(n*r)| O(n*r) |O(n+k)|稳定|√|     
+|基数排序|O(n*r) | O(n*r)| O(n*r) |O(n+k)|稳定|    
 
 在非比较排序中, k 代表容量大小(计数排序中为元素所在范围大小, 基数排序中为基数容量), r 为关键字的数量.
 
@@ -53,7 +66,7 @@
 
 
 
-## 1. 冒泡排序 (Bubble Sort)
+## 1 冒泡排序 Bubble Sort
 冒泡排序是一种简单的排序算法. 它列重复地走访过要排序的数,
 一次比较两个元素, 如果它们的顺序错误就把它们交换过来.
 走访数列的工作是重复地进行直到没有再需要交换,
@@ -117,7 +130,7 @@ def bullesort2(nums): # 鸡尾酒冒泡排序
 
 表现最稳定的排序算法之一, 因为无论什么数据进去都是 O(n<sup>2</sup>) 的时间复杂度, 唯一的好处可能就是不占用额外的内存空间. (但是太慢.)
 
-## 2. 快速排序 (Quick Sort)
+## 2 快速排序 Quick Sort
 
 快速排序的基本思想: 通过一趟排序将待排记录分隔成独立的两个子部分, 其中一部分记录的关键字均比另一部分的关键字小. 再分别对这两部分记录继续进行排序, 当拆分后的子部分中元素个数为 1 时, 即可达到整个序列有序的状态.  
 
@@ -172,9 +185,9 @@ def twoway_quick(nums,left,right): #双路快排, 对于重复数字将它们等
         if R<=L: break
         nums[L], nums[R] = nums[R], nums[L]
         L, R= L+1, R-1
-    nums[L], nums[R] = nums[R], nums[L] #不能省, R便可看作分割点
-    twoway_quick(nums, left, R-1)
-    twoway_quick(nums, R+1, right)
+    nums[right], nums[L] = nums[L], nums[right] #不能省, R便可看作分割点
+    twoway_quick(nums, left, L-1)
+    twoway_quick(nums, L+1, right)
     return
 ```
 #### 2.3.2 三路快排
@@ -208,7 +221,7 @@ def threeway_quick(nums,left,right):
 快速排序是一种非稳定排序算法, 形式上类似于归并排序, 操作上刚好相反, 一个是对集合先拆分后操作, 一个是对集合先操作后拆分. 对于 n 个元素的初始集合, 因为在每个子集合的拆分过程中, 都需要对集合进行遍历比较, 所以若对 k 个元素的集合进行拆分, 则比较次数级别为 O(k), 平均交换次数为 k/2, 即交换次数级别为 O(k).
 累加可得快速排序的比较和交换复杂度为 nlogn ~ n<sup>2</sup>. 排序过程属于原地排序, 不需要额外的存储空间, 所以空间复杂度只有递归时的压栈复杂度: logn ~ n. 在对快排进行优化后, 还可以进一步避免复杂度退化的情况.
 
-## 3. 直接插入排序 (Insertion Sort)
+## 3 直接插入排序 Insertion Sort
 
 插入排序是一种简单直观的排序算法. 它的工作原理是通过构建有序序列, 对于未排序数据, 在已排序序列中从后向前扫描, 找到相应位置并插入.
 > **c.f. 插入排序 v.s. 冒泡排序 v.s. 选择排序**   
@@ -270,7 +283,7 @@ def insertion_bi(nums):
 + 最坏情况下, 如当序列为逆序时, 算法的交换复杂度和比较复杂度都为 O(n<sup>2</sup>);
 + 最好情况下, 当序列比较有序时, 每一次迭代过程中,  只需要做少量几次比较交换即可. 算法的比较复杂度为和交换复杂度基本是 O(n).  因此在工程上, 当数组比较有序时会使用.
 
-## 4. 希尔排序 (Shell Sort)
+## 4 希尔排序 Shell Sort
 
 希尔排序是简单插入排序的改进版. 它与插入排序的不同之处在于, 它会优先比较距离较远的元素. 又称**缩小增量排序**.
 
@@ -301,12 +314,12 @@ def shell(nums):
 ### 4.3 算法分析
 
 希尔排序的运行时间依赖于增量序列的选择.
-> + 使用希尔增量时希尔排序的最坏情形运行时间为 O(n<sup>2</sup>).
-+ Hibbard增量序列: 1,4,7,…,2k-1,...这个增量的特点是增量没有公因子.      
+> + 使用原始希尔增量时希尔排序的最坏情形运行时间为 O(n<sup>2</sup>).
++ Hibbard增量序列: 1,4,7,…,2<sup>k</sup>-1,...这个增量的特点是增量没有公因子.      
  使用Hibbard增量的希尔排序的最坏情形运行时间为 O(n<sup>3/2</sup>).
 + Sedgewick提出了几种增量序列，其中最好的是序列 {1,5,19,41,109,…}.
-该序列中的项或者是 9*4i-9*2i+1 的形式, 或者是4i-3*2i+1.
-其最坏情形运行时间为 O(n<sup>4/3</sup>).         
+该序列中的项或者是 9\*4<sup>i</sup>-9\*2<sup>i</sup>+1 的形式, 或者是4<sup>i</sup>-3\*2<sup>i</sup>+1.
+其最坏情形运行时间猜想为 O(n<sup>4/3</sup>).         
 
 > c.f.: 希尔排序 v.s. 插入排序
 + 对于 n 个元素的序列, 由插入排序的结论可知, 插入排序的最好情况为序列处于已排序状态, 比较和交换复杂度为 O(n);  最坏情况为序列处于逆序状态, 比较和交换复杂度为 O(n<sup>2</sup>).
@@ -314,7 +327,7 @@ def shell(nums):
 最好情况下(正序) 希尔排序的每个增量值对应的比较复杂度近似为O(nlogn), 交换复杂度0.
 + 不过对于希尔排序, 逆序并不一定为最坏情况, 因为增量值的变化规则是人为设定的. 即使给出的初始序列为逆序状态, 当增量值减为一的时候, 此时的序列一定相对于最初状态有序很多. 当增量值变化规则为2<Sup>k</Sup>-1 时, 比较和交换的时间复杂度最坏为 O(2<Sup>k3/2</Sup>).
 
-## 5. 简单选择排序 (Selection Sort)
+## 5 简单选择排序 Selection Sort
 
 选择排序的工作原理：首先在未排序序列中找到最小(大)元素, 存放到排序序列的起始位置.  然后, 再从剩余未排序元素中继续寻找最小(大)元素, 然后放到已排序序列的末尾.
 > c.f.: 选择 v.s. 冒泡    
@@ -338,9 +351,109 @@ def selection(nums):
 ### 5.3 算法分析
 最符合大家思维的算法. 但时间复杂度保持在 O(n<sup>2</sup>), 算法不稳定.
 
-## 6. 堆排序 (Heap Sort)
+## 6 堆排序 Heap Sort
+堆的详细描述见 [堆的介绍(最大堆)](/the-introduction-of-heap.md) .     
+堆排序是指利用堆这种数据结构所设计的一种排序算法, 是一个反复调整堆的过程.
 
-## 8. 计数排序 (Counting Sort)
+### 6.1 算法描述
+* 利用待排序数组建立一个最大堆;
+* 把堆顶元素和堆尾元素互换;
+* 堆(待排序数组)尺寸 -1, 调整新堆
+* 重复上述步骤至堆尺寸 =1.
+
+### 6.2 代码实现
+```python
+def initialize(nums): #初始化最大堆
+    n = len(nums)
+    for i in range((n-1)//2,-1,-1):
+        heapify(nums,i,n)
+    return nums
+
+def heapify(nums,i,n): #调整大小为n的堆的第i个元素
+    if i>=n:return
+    maxx = i
+    if 2*i + 1 < n and  nums[maxx] < nums[2*i+1]:
+        maxx = 2*i + 1
+    if 2*i + 2 < n and nums[maxx] < nums[2*i+2]:
+        maxx = 2*i + 2        
+    if maxx != i:
+        nums[maxx], nums[i] = nums[i], nums[maxx]
+        heapify(nums,maxx,n)
+    return
+
+def heapsort(nums):
+    nums = initialize(nums)
+    for k in range(len(nums)-1,-1,-1):
+        nums[0], nums[k] = nums[k], nums[0]
+        heapify(nums,0,k)
+    return nums
+```
+### 6.3 算法分析
+堆排序是一种不稳定排序算法. 对于 n 个元素的序列, 构造堆过程时, 需要遍历的元素次数为O(n), 每个元素的调整次数为 O(logn), 所以构造堆复杂度为 O(nlogn). 迭代替换待排序集合首尾元素的次数为O(n), 每次替换后调整次数为  O(logn), 所以迭代操作的复杂度为 O(nlogn). 故总时间复杂度为 O(logn). 排序过程属于原地排序, 不需要额外的存储空间, 所以空间复杂度为 O(1).
+
+## 7 归并排序 Merge Sort
+
+归并排序是建立在归并操作上的一种有效的排序算法. 该算法是采用分治法 (divide and conquer) 的一个非常典型的应用. 将待排序集合拆分为多个子集合, 对子集合排序后, 合并子集合成为较大的子集合, 不断合并最终完成整个集合的排序.  
+> 以下所讲归并都是指二路归并:    
+之前的简单选择/冒泡/直接插入排序都是维持一个待排序集合和一个已排序集合, 在每次的迭代过程中从待排序集合中移动一个元素到已排序集合中, 通过不断的迭代来完成排序, 所以需要进行的迭代次数一般都是 O(n) 级别. 而归并排序则是每轮迭代消除半数的待排序子集合, 所以需要进行的迭代次数为 O(logn) 级别.
+
+### 7.1 top down (递归)算法描述
+
++ 把长度为n的待排序序列分成两个长度为n/2的子序列;
++ 对这两个子序列分别采用归并排序;
++ 将两个排序好的子序列合并成一个最终的排序序列.
+
+### 7.2 top down (递归)代码实现
+```python
+def merge(nums, left, mid, right): #合并
+    idx1, idx2, idx = left, mid +1, 0
+    new = [None] *(right - left +1)
+    while idx1 <=mid and idx2 <=right and idx <= right-left:
+        if nums[idx1] > nums[idx2]:
+            new[idx] =nums[idx2]
+            idx2 += 1
+        else:
+            new[idx] =nums[idx1]
+            idx1 += 1
+        idx +=1
+    while idx1 <=mid :
+        new[idx] =nums[idx1]
+        idx, idx1 = idx+1, idx1+1
+    while idx2 <=right:
+        new[idx] =nums[idx2]
+        idx, idx2 = idx+1, idx2+1
+    for i in range(left,right+1):
+        nums[i] = new[i-left]
+
+def mergesort(nums,left,right): #递归
+    if right <= left:return
+    mid = (left+right)//2
+    mergesort(nums,left, mid)
+    mergesort(nums, mid+1, right)
+    merge(nums,left,mid,right)
+```
+### 7.3 bottom up (迭代)代码实现
+```python
+def iterative_mergesort(nums):
+    n, gap = len(nums), 1
+    while gap < n:
+        left = 0
+        while left + gap < n:
+            mid = left +gap-1
+            right = min(n-1,mid+gap)
+            merge(nums,left,mid,right)
+            left = right+1
+        gap <<= 1
+```
+省略了 O(logn)的压栈空间, 本质上迭代和递归没有太大差别.  
+
+
+### 7.4 算法分析
+
+归并排序是一种稳定排序算法, 排序过程中, 如果两个元素值相等, 则不交换元素位置. 对于 n 个元素的序列, 根据算法执行的比较次数和元素移动次数可知, 算法的时间复杂度为 O(nlogn). 算法执行过程中, 需要申请额外的序列空间来保存临时元素, 所以算法的空间复杂度为 O(n).
+
+
+## 8 计数排序 Counting Sort
 
 计数排序有着线性时间复杂度, 是一种快于任何比较排序算法的排序算法. 其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中, 因此计数排序要求输入的数据必须是有确定范围的整数.
 
@@ -372,7 +485,7 @@ def counting(nums): #计数排序
 计数排序的优势在于在对一定范围内的整数排序时, 它的时间/空间复杂度均为 Ο(n+k)(其中k是整数的范围). 当然这是一种牺牲空间换取时间的做法. 由此可知, 计数排序只适用于元素值较为集中的情况, 若数组中最大最小元素值相差甚远, 即 O(k) > O(nlogn) 的时候其效率反而不如一些基于比较的排序.  
 通过额外空间的作用方式可知, 若待排序集合中的元素值为浮点数形式或其他形式, 则需要对元素值或元素差值做变换, 以保证所有差值都为一个非负整数形式.  
 
-## 9. 桶排序 (Bucket Sort)
+## 9 桶排序 Bucket Sort
 
 桶排序是将待排序集合中处于同一个值域的元素存入同一个桶中, 即根据元素值特性将集合拆分为多个区域, 形成的这些桶从值域上看是有序的. 再对每个桶中元素进行排序, 则所有桶中元素所构成的集合是已排序的.
 
@@ -389,7 +502,20 @@ def counting(nums): #计数排序
 + 对每个不是空的桶中的元素进行排序 (使用其它排序算法或以递归方式继续使用桶排序), 并移动到已排序集合中.  
 
 ### 9.2 代码实现
-
+```python
+def bucket(nums):
+    maxx, minn  = max(nums), min(nums)
+    dic = [[] for i in range(maxx//10 - minn//10 +1)]
+    for x in nums:
+        idx = x//10 -minn//10
+        dic[idx].append(x)
+    nums.clear()
+    for col in dic: #每个列调用快排排序
+        print(col)
+        twoway_quick(col,0,len(col)-1)
+        nums.extend(col)
+        print(col)
+```
 ### 9.3 算法分析
 
 桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。
@@ -402,7 +528,7 @@ def counting(nums): #计数排序
 * 排序算法的选择，从待排序集合中元素映射到各个桶上的过程，并不存在元素的比较和交换操作，在对各个桶中元素进行排序时，可以自主选择合适的排序算法，桶排序算法的复杂度和稳定性，都根据选择的排序算法不同而不同。
 
 
-## 10. 基数排序 (Radix Sort)
+## 10 基数排序 Radix Sort
 
 基数排序属于 "分配式排序", 也可以称为多关键字排序, 是按照不同的位数，或者优先级来排列某个元素，同计数排序类似，也是一种非比较性质的排序算法. 将待排序集合中的每个元素拆分为多个总容量空间较小的对象, 对每个对象执行桶排序.  
 
@@ -476,3 +602,11 @@ def radix(nums):
 + [理解希尔排序的排序过程](https://blog.csdn.net/weixin_37818081/article/details/79202115)
 
 + [数据结构排序算法之希尔排序演示](https://www.bilibili.com/video/av17062242?from=search&seid=15487942313356277630)
+
++ [希尔排序与堆排序](https://www.bilibili.com/video/av15961896)
+
++ [数据结构排序算法之堆排序演示](https://www.bilibili.com/video/av18980178)
+
++ [堆排序(heapsort)](https://www.bilibili.com/video/av47196993)
+
++ [桶排序-算法思想](https://www.bilibili.com/video/av55573441)
