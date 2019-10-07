@@ -13,11 +13,11 @@
 
 ### DFA介绍
 Deterministic finite automata(DFA): 确定有穷自动机.    
-其特征为: 有一个有限状态集合 (K) 和一些从一个状态通向另一个状态的边 , 
-每条边上标记有一个符号(δ), 其中一个状态是初态 (q0), 某些状态是终态(F). 
-但不同于不确定的有限自动机(NFA), 
+其特征为: 有一个有限状态集合 (K) 和一些从一个状态通向另一个状态的边 ,
+每条边上标记有一个符号(δ), 其中一个状态是初态 (q0), 某些状态是终态(F).
+但不同于不确定的有限自动机(NFA),
 DFA中不会有从同一状态出发的两条边标志有相同的符号.   
-大白话 : DFA 的每一步操作都是确定的, 
+大白话 : DFA 的每一步操作都是确定的,
 即: 当一个状态面对一个输入符号的时候，它所转换到的是一个唯一确定的状态.
 ```
 M = ( K, Σ, δ, q0, F )
@@ -26,10 +26,10 @@ M = ( K, Σ, δ, q0, F )
 *  Σ： 输入字母表, 即输入符号集合.
 *  δ： 将 S×Σ 映射到 S 的**状态转换函数**.    
 > s∈K, a∈Σ,  δ(s,a) 表示从状态 s 出发, 沿着标记为 a 的边所能到达的状态.
-*  q0：开始状态 (或初始状态), q0∈K. 
-*  F：接收状态（或终止状态）集合, F⊆ S. 
- 
-### 本题中的DFA 
+*  q0：开始状态 (或初始状态), q0∈K.
+*  F：接收状态（或终止状态）集合, F⊆ S.
+
+### 本题中的DFA
 ![dfa](https://wx2.sinaimg.cn/mw690/006qmTkdly1g73xfzx39rj323l1qitqs.jpg)
 
 ## [法3] 正则表达式.
@@ -64,7 +64,7 @@ M = ( K, Σ, δ, q0, F )
 | `[0-9]+\.?` | 出现了0-9中数字>=1次,然后出现小数次数1次或没有小数点. |   
 | `\.[0-9]+`  | 小数点 + 至少一位数字 |    
 | `([0-9]+)?` | 出现至少一位有效数字, 这个子组出现1次/0次. |      
-| `(e(-|\+)?[0-9]+)?`| e+符号子组+至少一位数字, 这个子组出现1次/0次. |
+| `(e(-\|\+)?[0-9]+)?`| e+符号子组+至少一位数字, 这个子组出现1次/0次. |
 
 ### 常用的re函数：
 
@@ -74,13 +74,13 @@ M = ( K, Σ, δ, q0, F )
 | `search(p, s, flags=0)`  | 扫描 s 并返回第一个成功被 p 匹配的 s 子串. 失败返回None. |    
 | `findall(p, s, flags=0)` | 找到 s 中所有被 p 匹配的子串(非重复), 返回一个列表. |
 | `finditer(p, s, flags=0)` | 同 `findall()`, 但返回的是迭代器.     |     
-| `split(p, s, max=0)`     | 根据模式分割符 p, 将 s 分割为列表并返回,最多切 max 次. | 
+| `split(p, s, max=0)`     | 根据模式分割符 p, 将 s 分割为列表并返回,最多切 max 次. |
 
 函数参数说明：    
 * p(pattern) : 匹配的正则表达式
 * s(string) ： 要匹配的字符串
 * flags：标记为，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。
-  
+
 ### `re.match()` 详解
 ```python3
 re.match(pattern, string, [flags])
@@ -88,14 +88,14 @@ re.match(pattern, string, [flags])
 从首字母开始开始匹配, string 如果包含pattern子串, 则匹配成功, 返回Match对象.
 失败则返回None. 若要完全匹配, pattern要以`$`结尾.  
 
-Match对象为 `MatchObject` 实例, 其中有这次匹配的信息: 它是从哪里开始(start)和结束(end), 它所匹配的子串(group(0))等等. 
- 
+Match对象为 `MatchObject` 实例, 其中有这次匹配的信息: 它是从哪里开始(start)和结束(end), 它所匹配的子串(group(0))等等.
+
 e.g.: `p, s ="c*a.*ja", "aasssaijsja"`    
 <_sre.SRE_Match object; span=(0, 11), match='aasssaijsja'>
 
 ## [法4] 作弊法.  
 
-注: 这里不能使用 `if...else...`, 因为会 return False 的异常字符在 `float()` 中会出错, 所以只能用 `try...except...` 捕获异常. 
+注: 这里不能使用 `if...else...`, 因为会 return False 的异常字符在 `float()` 中会出错, 所以只能用 `try...except...` 捕获异常.
 
 ```python3
         try: float(s)
@@ -111,5 +111,5 @@ e.g.: `p, s ="c*a.*ja", "aasssaijsja"`
 [正则表达式手册](http://tool.oschina.net/uploads/apidocs/jquery/regexp.html)   
 
 [Python3 re模块](https://www.cnblogs.com/smxiazi/p/8911964.html)  
-   
+
 [Python3 正则表达式](https://www.runoob.com/python3/python3-reg-expressions.html)
