@@ -15,21 +15,21 @@
 |-- |--|--|--|--|--|    
 |`\|`|1 |1 |0 |0 |1 |    
 |   |1 |1 |0 |1 |1 |     
-   
+
 * `^`异或 (xor) 运算. 两个位相同取0, 不同取0. (因此`a^a` 为0, `0^a` 为a.)    
 
 |   |1 |0 |0 |1 |1 |   
 |-- |--|--|--|--|--|      
 |`^`|1 |1 |0 |0 |1 |    
-|   |0 |1 |0 |1 |0 | 
+|   |0 |1 |0 |1 |0 |
 
 * `~` 取反 (not) 运算. 0 <-> 1. (e.g. -a = ~a+1.)    
 
 |`~`|1 |0 |0 |1 |1 |   
 |-- |--|--|--|--|--|      
-|   |0 |1 |1 |0 |0 | 
- 
-* `<<` 左移 (shl) 运算. 向左移位, 高位丢弃,低位补 0. 
+|   |0 |1 |1 |0 |0 |
+
+* `<<` 左移 (shl) 运算. 向左移位, 高位丢弃,低位补 0.
 
 *  `>>` 右移 (shr) 运算. 向右移位, 低位丢弃, 对无符号数, 高位补0; 对于有符号数, 高位补符号位.  
 
@@ -39,14 +39,14 @@
 
 2. 两数交换. (`^` 满足交换律)
 ```
-    a ^= b  # a = (a^b) 
+    a ^= b  # a = (a^b)
     b ^= a  # b = b^(a^b) = (b^b)^a = 0^a = a
     a ^= b  # a = (a^b)^a = b
 ```
 
 3. 判断奇偶.
 ```
-    if a & 1 : 
+    if a & 1 :
         print("odd number")
     else:
         print("even number")
@@ -71,3 +71,5 @@
 * [136. Single Number. [E]](https://leetcode.com/problems/single-number/)
 
 * [137. Single Number II. [M]](https://leetcode.com/problems/single-number-ii/)
+
+* [201. Bitwise AND of Numbers Range. [M]](https://leetcode.com/problems/bitwise-and-of-numbers-range/)
