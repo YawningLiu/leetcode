@@ -84,11 +84,38 @@ lc62的升级版, 依旧是很简单的 dynamic programming. `dp[i][j] = grid[i]
   F<Sub>N</Sub>, F<Sub>N-1</Sub> ].  
   用快速求幂法时间复杂度 O(logN).     
 
-71. **Simplify Path. [M]**
-72. **Edit Distance. [H]**
-73. **Set Matrix Zeroes. [M]**
-74. **Search a 2D Matrix. [M]**
-75. **Sort Colors. [M]**
+71. **Simplify Path. [M]**    
+把所给出的路径化简为 unix 的绝对路径, 根据题意写就行. 没啥意思.
+
+72. **Edit Distance. [H]**    
+ **[法1]** Dynamic programming. 状态转移方程:
+ ```
+ # 初值:dp[0][i] = i, dp[j][0] = j
+     if word1[i-1]==word2[j-1]:
+         dp[j][i]=dp[j-1][i-1]
+     else:
+         dp[j][i]=min(dp[j][i-1],dp[j-1][i-1],dp[j-1][i])+1  #选择步数最小的方法
+ ```
+ **[法2]** 双向队列 `collections.deque` (其实就是把递归的压栈改成储存于数组), 注意要设置 visited 防止重复的结果. 关键步骤:
+ ```
+ q.extend([(w1[1:], w2[1:], d), (w1, w2[1:], d), (w1[1:], w2, d)])
+ ```
+
+73. **Set Matrix Zeroes. [M]**     
+难点在于 O(1) space. 其实也没什么意思....    
+  **法1**: 用2个常数记录第1行/列来记录矩阵其他行列是否有0,
+再用第1行/列来记录矩阵其他行列是否有0.    
+  **法2**: 找一个不存在于矩阵中的值为标记值; 第一次遍历矩阵,
+  将0出现的行/列改为标记值; 第二次遍历矩阵, 将标记值改为0.
+
+74. **Search a 2D Matrix. [M]**    
+直接用二分法即可. 没什么意思.    
+
+75. **Sort Colors. [M]**     
+  即 [荷兰国旗问题](https://www.jianshu.com/p/356604b8903f).
+  **法1**: counting sort.     
+  **法2**: 题目要求的一次遍历 + 常数空间. 双指针, 类似三路快排.
+
 76. **Minimum Window Substring. [M]**
 77. **Combinations. [M]**
 78. **Subsets. [M]**
