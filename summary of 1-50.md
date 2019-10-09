@@ -129,7 +129,7 @@ Two pointers. 类似 26, 更简单. 除了类似上题的从前 -> 后的快慢�
 
 28. **Implement strStr(). [E]**   
   **[法1]** Two pointers in string.(都不算.) 很简单,没啥意思.  => 幼稚KMP算法. 时间复杂度 O(m*n)    
-  **[法2]** KMP算法.
+  **[法2]** [KMP算法](https://github.com/YawningLiu/leetcode/blob/master/kmp.md). 时间复杂度 O(m+n)
 
 29. **Divide Two Integers. [M]**    
 [知乎](https://zhuanlan.zhihu.com/p/73450264)写过了.  py一般没有这个烦恼. 以后用 C++ 时再看. 需要注意的地方:    
@@ -278,7 +278,7 @@ return list({p for p in itertools.permutations(nums)}) #一句话解决
 [知乎](https://zhuanlan.zhihu.com/p/74650414)已写. 还是 Hash Table 的应用.  
   **[法1]** 对str中元素 x 进行 `tuple(sorted(x))` ,  `''.join(sorted(x))` 作为 key 存入dict, 最后 `dict.values()`.    
   **[法2]** 对由于只有小写字母, 故可将其转化为长为26的列表进行操作.     
-  **[法3]** 算数基本定理. 原理同上, 尤其唯一性来的, 但只适用于单词长度较短时, (单词较长会溢出.) 
+  **[法3]** 算数基本定理. 原理同上, 尤其唯一性来的, 但只适用于单词长度较短时, (单词较长会溢出.)
 
 50. **Pow(x, n). [M]**   
   **Binary search** + 注意 边界. 有递归 + 迭代两种形式. 其实就是考考二分法.
