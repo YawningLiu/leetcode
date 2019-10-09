@@ -116,8 +116,13 @@ lc62的升级版, 依旧是很简单的 dynamic programming. `dp[i][j] = grid[i]
   **法1**: counting sort.     
   **法2**: 题目要求的一次遍历 + 常数空间. 双指针, 类似三路快排.
 
-76. **Minimum Window Substring. [M]**
-77. **Combinations. [M]**
+76. **Minimum Window Substring. [M]**    
+  **sliding window**典型题目. 具体使用了哈希表(充当计数器) 和 双指针(实现窗口滑动).
+
+77. **Combinations. [M]**    
+回溯 (递归) / 迭代 / 动态规划. 
+
+
 78. **Subsets. [M]**
 79. **Word Search. [M]**
 80. **Remove Duplicates from Sorted Array II. [M]**
