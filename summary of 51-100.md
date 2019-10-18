@@ -120,15 +120,113 @@ lc62的升级版, 依旧是很简单的 dynamic programming. `dp[i][j] = grid[i]
   **sliding window**典型题目. 具体使用了哈希表(充当计数器) 和 双指针(实现窗口滑动).
 
 77. **Combinations. [M]**    
-回溯 (递归) / 迭代 / 动态规划. 
+回溯 (递归) / 迭代 (字符序) / 动态规划.    
+熟记就行. 库函数:
+```
+return list(itertools.combinations(range(1, n+1), k))
+```
 
+78. **Subsets. [M]**    
+方法很多. **[法1] 常用解法**: 迭代 / 递归 / 库函数.
+  ```
+  res = []
+  for i in range(len(nums)+1):
+      for tmp in itertools.combinations(nums, i):  # 库函数
+        res.append(tmp)
+  return res
+  ```
+  **[法2] 位运算**. 数组中每个数字分为在子数组中和不在子数组中, 即 为1, 0, 且在二进制下对应唯一的数字.
 
-78. **Subsets. [M]**
-79. **Word Search. [M]**
-80. **Remove Duplicates from Sorted Array II. [M]**
-81. **Search in Rotated Sorted Array II. [M]**
-82. **Remove Duplicates from Sorted List II. [M]**
-83. **Remove Duplicates from Sorted List. [E]**
-84. **Largest Rectangle in Histogram. [H]**
-85. **Maximal Rectangle. [H]**
-86. **Partition List. [M]**
+79. **Word Search. [M]**    
+DFS 标准算法 (也就是回溯). 把矩阵看做一个图, 利用图的深度优先遍历即可. 注意 状态重置 / 记录状态是否遍历过.   
+
+80. **Remove Duplicates from Sorted Array II. [M]**    
+lc-26 升级版. 原地删除就是快慢指针, 一个指向被遍历元素, 一个指向待写入位置.   
+
+81. **Search in Rotated Sorted Array II. [M]**    
+lc-33 升级版. 有重复数字时的情况. 讨论下特殊情况即可.     
+
+82. **Remove Duplicates from Sorted List II. [M]**    
+  **[法1]** 哑节点 + 快慢指针 / **[法2]** 递归.
+
+83. **Remove Duplicates from Sorted List. [E]**    
+lc-82 的简单版. 没啥意思.
+
+84. **Largest Rectangle in Histogram. [H]**    
+  **[法1]**  **stack**. O(n) time. 类似42题的单调栈法. 为了精简代码, 利用 py3 特性增加: `height.append(0)`. 即矩阵末尾添加 0 元素.      
+  **[法2]** **divide and conquer**. O(nlogn) time. 类似归并排序, 矩阵平均分为两个子矩阵 + middle列, 递归求子矩阵最大值, 再求横跨两个子矩阵的最大值, 取最大.            
+  **[法3]** **divide and conquer + segment tree**. O(nlogn) time.
+  上面的分治是利用从中间等分, 这里的分治是从最小值处划分, 类似快排.
+  (线段树的使用就是为了排除最小值在极限情况下时间复杂度又变成了O(n<Sup>2</sup>) 的情况)     
+  **[法4]** 找下标. O(n) time. 利用两个数组分别记录 A[i] 左/右 分别比之小第一个数的下标,
+  类似单调栈, 计算这两个数组时每个i最多出现2次, 因此这个方法耗时也是线性的.  
+
+85. **Maximal Rectangle. [H]**     
+    **[法1]** 利用 84题的解法即可 (栈的解法).   
+    **[法2]** 动态规划. 如何确定最优子结构 + 如何利用最优子结构来推导当前最优解.
+    对于矩阵上里每一行, 找出比当前值小的最近左 / 右 下标 (类似84的解法4).
+
+86. **Partition List. [M]**     
+链表划分为大于和小于x的两部分, 链表基础操作, 不难.
+
+87. **Scramble String. [H]**     
+  **[法1]** 剪枝的递归.  两个需要注意的点:
+  ① `sort` 的妙用 => 节省了很多不必要的时间;
+  ② hash 表的 使用 => 储存已得到的结果, 即剪枝.   
+  **[法2]** 动态规划. 即正向使用递归. 需要三维动态矩阵来储存结果.
+
+88. **Merge Sorted Array. [E]**    
+双指针. 分为: 从前往后添加 (常见) / 从后往前添加 (省去了更多的数据移动, 牛逼!).
+
+89. **Gray Code. [M]**    
+  **[法1]** 类似集合取子集时的回溯.    
+  **[法2]** 位运算. 利用格雷码的定义: ` G(i) = i ^ (i//2)`.
+  ```
+  return [i ^ i >> 1  for i in range(1 << n)]
+  ```
+    **[法3]** 镜像反射法 + 数学归纳法. 已知G(n), 则      
+    `G(n+1) = ( [0] + G(n) ) ∪ ( [1] + Reverse(G(n)) )`.
+
+90. **Subsets II. [M]**     
+lc-78 升级版, 增加了重复数字的影响. 这时就需要**排序**. **回溯**标准题, 排序后注意剪枝即可.  (**迭代**也可以, 但是没那么显然: 另需一个指标记录当前数字出现多少次, 再与当前被选择数组比较.)
+
+91. **Decode Ways. [M]**    
+递归 / 动态规划. 可以由 n 维dp数组缩减为常数 dp 变量.
+
+92. **Reverse Linked List II. [M]**    
+链表基础题. 多画图即可, 注意题目要求只能遍历一次.
+
+93. **Restore IP Addresses. [M]**      
+简单回溯(dfs)题. (其实暴力也能做, 因为数组不大).     
+IP格式: 4部分, 每部分 0~255, 且不能出现以0开头的多位数.  
+
+94. **Binary Tree Inorder Traversal. [M]**    
+二叉树遍历标准题目.  **[法1]** 递归; **[法2]** 迭代 + 栈;        
+ **[法3]** **Morris Traversal**. 不需要额外空间,  但会破坏树的结构. 把根节点挪到其左节点的最右叶子节点,根节点的左节点设为空.     
+ => 不破坏树结构: 在寻找最右叶子节点时, 分为两类: 空(添加根节点) / 等于当前根节点 (删去最右叶子节点). [代价: 耗费更多时间.]
+
+95. **Unique Binary Search Trees II. [M]**     
+递归. 可以利用左右子树**同构** + 记忆化词典节省空间. (动态规划太复杂, 特点不够鲜明.)    
+
+96. **Unique Binary Search Trees. [M]**   
+  **[法1]** 动态规划. 状态转移方程比较简单.     
+   => 还可以利用**对称性**减少循环步骤.      
+  **[法3]** **cantalan 数**. 利用公式计算即可:
+  C<Sub>​n</sub>=(2n)∗(2n−1)∗...∗(n+1)/(n+1)!      
+  ![排序图](https://wx4.sinaimg.cn/mw690/006qmTkdly1g82q4b6hr0j307q01wdfp.jpg)
+
+97. **Interleaving String. [H]**      
+  **[法1]** 动态规划.  
+  **[法2]** DFS.    
+  **[法3]** BFS.
+
+98. **Validate Binary Search Tree. [M]**   
+  **[法1]** 递归.    
+  **[法2]** DFS/BFS.    
+  **[法3]** 中序遍历.
+
+99. **Recover Binary Search Tree. [H]**     
+本质还是中序遍历.  
+
+100. **Same Tree. [E]**    
+方法很多: 前序 / 中序 / 后序 / 层次遍历. 又可细分为 递归/ 迭代+栈 / morris 遍历.
