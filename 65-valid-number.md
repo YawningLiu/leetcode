@@ -9,8 +9,6 @@
 
 ## [法2] DFA.
 
->  我与 DFA 的第一次相识---人生若只如初见
-
 ### DFA介绍
 Deterministic finite automata(DFA): 确定有穷自动机.    
 其特征为: 有一个有限状态集合 (K) 和一些从一个状态通向另一个状态的边 ,
